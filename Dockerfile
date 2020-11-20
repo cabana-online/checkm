@@ -8,6 +8,8 @@ LABEL maintainer.email="me@alemadlei.tech"
 
 USER root
 
+ARG USER=cabana
+
 # Installs development tools.
 RUN set -xe; \
     \
