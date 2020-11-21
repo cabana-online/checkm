@@ -15,13 +15,15 @@ RUN set -xe; \
     \
     apt-get update -y && apt-get upgrade -y && \
     apt-get install -y python3 python3-pip hmmer prodigal && \
-    pip3 install numpy matplotlib pysam checkm-genome && \
+    pip3 install numpy matplotlib pysam checkm-genome==1.1.2 && \
     apt-get clean && \
     apt-get autoclean;
 
 RUN \
+    mkdir /home/cabana/.config && \
     mkdir /home/cabana/tools/checkm && \
     checkm data setRoot /home/cabana/tools/checkm && \
+    chown -R $USER:$USER /home/cabana/.config && \
     chown -R $USER:$USER /home/cabana/tools/checkm;
 
 RUN \
